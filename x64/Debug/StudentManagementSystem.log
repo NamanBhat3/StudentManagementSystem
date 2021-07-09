@@ -1,0 +1,10 @@
+﻿  main.cpp
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.h(10,34): error C2504: 'StudentStatus': base class undefined
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.h(11,1): error C2504: 'Register': base class undefined
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.h(21,1): error C2504: 'StudentStatus': base class undefined
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.cpp(18,13): error C2352: 'Register::Ask_Details_Of_Student': illegal call of non-static member function
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.h(26): message : see declaration of 'Register::Ask_Details_Of_Student'
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.cpp(23,13): error C2352: 'Register::Register_Admin_Account': illegal call of non-static member function
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.h(25): message : see declaration of 'Register::Register_Admin_Account'
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.cpp(101,17): error C2352: 'StudentStatus::Confirm_Identity_Of_User': illegal call of non-static member function
+C:\Users\rithu\Desktop\Naman\CODING\StudentManagementSystem\main.cpp(27): message : see declaration of 'StudentStatus::Confirm_Identity_Of_User'
