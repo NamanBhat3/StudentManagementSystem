@@ -31,6 +31,23 @@ void Main::Ask_User()
 	}
 }
 
+inline bool Main::exist(const string& name)
+{
+	ifstream file(name);
+	if (!file) // If the file was not found, then file is 0, i.e. !file=1 or true.
+	{
+		cout << "The user does not exist. Please choose what you want to do below" << endl;
+		this->Ask_User();
+		return false;
+	}
+	else // If the file was found, then file is non-0.
+	{
+		cout << "The user exists." << endl;
+		return true;
+	}
+	file.close();
+}
+
 void Main::Confirm_Identity_Of_User()
 {
 	this->ResetCredentials();
@@ -39,26 +56,26 @@ void Main::Confirm_Identity_Of_User()
 	cin >> admin_name;
 	cout << "Enter your password: \t";
 	cin >> admin_password;
+	temp_name_of_file = admin_name + ".txt";
+	const string name_of_file_constant = temp_name_of_file;
+	this->exist(name_of_file_constant);
 	ifstream Admin_Log(admin_name + ".txt");
 	Admin_Log >> temp_account_type;
 	getline(Admin_Log, temp_name);
 	getline(Admin_Log, temp_password);
 	if (temp_name != admin_name)
 	{
-		Answers = "";
 		cout << "The User with this name does not exist" << endl;
 		cout << "Do you want to register an admin account? Format: Y/n \t";
 		cin >> Answers;
 		if (Answers == "Y")
 		{
 			cout << "\n";
-			Answers = "";
 			this->Register_Admin_Account();
 		}
 		else if (Answers == "n")
 		{
 			cout << "Ok thank you for using our services" << endl;
-			Answers = "";
 			exit(0);
 		}
 	}
@@ -145,8 +162,6 @@ void Main::StudentInfo()
 	getline(StudInf, student_admission_no);
 	getline(StudInf, student_age);
 	getline(StudInf, student_fee_status);
-	
-
 }
 
 void Main::ResetCredentials()
@@ -164,9 +179,11 @@ void Main::ResetCredentials()
 	student_admission_no = "";
 	student_age = "";
 	student_fee_status = "";
+	temp_name_of_file = "";
 }
 
 int main()
 {
-
+	Main obj;
+	obj.Ask_User();
 }
