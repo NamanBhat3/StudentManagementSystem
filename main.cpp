@@ -12,20 +12,24 @@ void Main::Ask_User()
 	cin >> Answers;
 	if (Answers == "1")
 	{
+		this->ResetCredentials();
 		this->StudentInfo();
 	}
 
 	else if (Answers == "2")
 	{
+		this->ResetCredentials();
 		this->Ask_Details_Of_Student();
 	}
 
 	else if (Answers == "3")
 	{
+		this->ResetCredentials();
 		this->Register_Admin_Account();
 	}
 	else if (Answers == "4")
 	{
+		this->ResetCredentials();
 		this->GreetingsAfterExit();
 	}
 }
@@ -70,10 +74,12 @@ void Main::Confirm_Identity_Of_User()
 		if (Answers == "Y")
 		{
 			cout << "\n";
+			this->ResetCredentials();
 			this->Register_Admin_Account();
 		}
 		else if (Answers == "n")
 		{
+			this->ResetCredentials();
 			this->GreetingsAfterExit();
 		}
 	}
@@ -85,11 +91,13 @@ void Main::Confirm_Identity_Of_User()
 		cin >> Answers;
 		if (Answers == "Y")
 		{
+			this->ResetCredentials();
 			this->Confirm_Identity_Of_User();
 		}
 
 		else if (Answers == "n")
 		{
+			this->ResetCredentials();
 			this->GreetingsAfterExit();
 		}
 	}
@@ -120,14 +128,15 @@ void Main::Register_Admin_Account()
 	cout << "Registration of the admin is successfull" << endl;
 	cout << "Do you want to continue? Format: Y/n" << endl;
 	cin >> Answers;
-	this->ResetCredentials();
 	if (Answers == "Y")
 	{
+		this->ResetCredentials();
 		this->Ask_User();
 	}
 
 	else if (Answers == "n")
 	{
+		this->ResetCredentials();
 		this->GreetingsAfterExit();
 	}
 }
@@ -153,8 +162,19 @@ void Main::Ask_Details_Of_Student()
 	Student_Reg << student_fee_status << endl;
 	Student_Reg.close();
 	cout << "Registeration of the student was successful \n" << endl;
-	this->Ask_User();
-	this->ResetCredentials();
+	cout << "Do you want to continue? Format: Y/n" << endl;
+	cin >> Answers;
+	if (Answers == "Y")
+	{
+		this->ResetCredentials();
+		this->Ask_User();
+	}
+
+	else if (Answers == "n")
+	{
+		this->ResetCredentials();
+		this->GreetingsAfterExit();
+	}
 }
 
 void Main::StudentInfo()
@@ -178,18 +198,20 @@ void Main::StudentInfo()
 	cout << "Admission number of the student is " << student_admission_no << endl;
 	cout << "Age of the student is " << student_age << endl;
 	cout << "The fee status of the student is " << student_fee_status << endl;
-	this->ResetCredentials();
 	cout << "Do you want to continue? Format: Y/n" << endl;
 	cin >> Answers;
 	if (Answers == "Y")
 	{
+		this->ResetCredentials();
 		this->Ask_User();
 	}
 
 	else if (Answers == "n")
 	{
+		this->ResetCredentials();
 		this->GreetingsAfterExit();
 	}
+	
 }
 
 void Main::GreetingsAfterExit()
