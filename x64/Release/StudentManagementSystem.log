@@ -1,0 +1,7 @@
+﻿  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 211 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Compiler terminating.  Please wait........... Abort complete.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(1075,5): error MSB6006: "link.exe" exited with code 4.

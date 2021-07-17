@@ -2,9 +2,6 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<direct.h>
-#include<sys/stat.h>
-#include<sys/types.h>
 using namespace std;
 
 class Main 
@@ -18,5 +15,6 @@ public:
 	void Ask_User();
 	void StudentInfo();
 	void ResetCredentials();
+	void GreetingsAfterExit();
 	inline bool exist(const string&);
 };

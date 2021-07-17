@@ -26,8 +26,7 @@ void Main::Ask_User()
 	}
 	else if (Answers == "4")
 	{
-		cout << "Ok thank you for using our services" << endl;
-		exit(0);
+		this->GreetingsAfterExit();
 	}
 }
 
@@ -75,8 +74,7 @@ void Main::Confirm_Identity_Of_User()
 		}
 		else if (Answers == "n")
 		{
-			cout << "Ok thank you for using our services" << endl;
-			exit(0);
+			this->GreetingsAfterExit();
 		}
 	}
 	else if (temp_password != admin_password)
@@ -92,11 +90,11 @@ void Main::Confirm_Identity_Of_User()
 
 		else if (Answers == "n")
 		{
-			cout << "Ok thank you for using our services";
-			exit(0);
+			this->GreetingsAfterExit();
 		}
 	}
 	Admin_Log.close();
+	this->ResetCredentials();
 }
 
 void Main::Register_Admin_Account()
@@ -122,6 +120,16 @@ void Main::Register_Admin_Account()
 	cout << "Registration of the admin is successfull" << endl;
 	cout << "Do you want to continue? Format: Y/n" << endl;
 	cin >> Answers;
+	this->ResetCredentials();
+	if (Answers == "Y")
+	{
+		this->Ask_User();
+	}
+
+	else if (Answers == "n")
+	{
+		this->GreetingsAfterExit();
+	}
 }
 
 void Main::Ask_Details_Of_Student()
@@ -146,6 +154,7 @@ void Main::Ask_Details_Of_Student()
 	Student_Reg.close();
 	cout << "Registeration of the student was successful \n" << endl;
 	this->Ask_User();
+	this->ResetCredentials();
 }
 
 void Main::StudentInfo()
@@ -157,15 +166,41 @@ void Main::StudentInfo()
 	cout << "Enter the name of the student for which you want to see the information" << endl;
 	cin >> student_name;
 	ifstream StudInf(student_name + ".txt");
+	const string name_of_file_constant = student_name + ".txt";
+	this->exist(name_of_file_constant);
 	this->ResetCredentials();
 	getline(StudInf, student_name);
 	getline(StudInf, student_admission_no);
 	getline(StudInf, student_age);
 	getline(StudInf, student_fee_status);
+
+	cout << "Name of the student is " << student_name << endl;
+	cout << "Admission number of the student is " << student_admission_no << endl;
+	cout << "Age of the student is " << student_age << endl;
+	cout << "The fee status of the student is " << student_fee_status << endl;
+	this->ResetCredentials();
+	cout << "Do you want to continue? Format: Y/n" << endl;
+	cin >> Answers;
+	if (Answers == "Y")
+	{
+		this->Ask_User();
+	}
+
+	else if (Answers == "n")
+	{
+		this->GreetingsAfterExit();
+	}
+}
+
+void Main::GreetingsAfterExit()
+{
+	cout << "Ok thank you for using our services" << endl;
+	exit(0);
 }
 
 void Main::ResetCredentials()
 {
+	// This function resets all the credentials of the user so that no one can access them apart from the trusted user.
 	temp_name = "";
 	temp_password = "";
 	temp_employee_number = "";
